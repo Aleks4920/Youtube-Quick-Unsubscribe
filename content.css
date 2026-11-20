@@ -1,0 +1,68 @@
+/* The one-click button */
+.ytqu-btn {
+  margin-left: 8px;
+  height: 36px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 18px;
+  background: #cc0000;
+  color: #fff;
+  font: 500 14px/36px Roboto, Arial, sans-serif;
+  cursor: pointer;
+  white-space: nowrap;
+  flex: none;
+  align-self: center;
+}
+.ytqu-btn:hover { background: #e00000; }
+.ytqu-btn:disabled { background: #717171; cursor: default; }
+.ytqu-btn.ytqu-done { background: #3f3f3f; }
+
+/* Put our button beside YouTube's own subscribe button */
+ytd-channel-renderer #buttons.ytqu-row,
+ytd-channel-renderer .ytqu-row {
+  display: flex !important;
+  align-items: center;
+}
+
+/* While the script works, hide YouTube's menu and dialog so nothing flashes */
+html.ytqu-running ytd-popup-container tp-yt-iron-dropdown,
+html.ytqu-running ytd-popup-container tp-yt-paper-dialog,
+html.ytqu-running tp-yt-iron-overlay-backdrop {
+  opacity: 0 !important;
+}
+
+/* "Unsubscribe from all" bar */
+.ytqu-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 8px 0 16px;
+  font: 400 14px Roboto, Arial, sans-serif;
+  color: var(--yt-spec-text-secondary, #aaa);
+}
+.ytqu-bar.ytqu-floating {
+  position: fixed;
+  top: 64px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2100;
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: 24px;
+  background: rgba(15, 15, 15, 0.95);
+}
+.ytqu-bar button {
+  height: 36px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 18px;
+  font: 500 14px/36px Roboto, Arial, sans-serif;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.ytqu-all { background: #cc0000; color: #fff; }
+.ytqu-all:hover { background: #e00000; }
+.ytqu-all.ytqu-armed { background: #ff4e45; outline: 2px solid #fff; }
+.ytqu-all:disabled { background: #717171; cursor: default; }
+.ytqu-stop { background: #f1f1f1; color: #0f0f0f; }
+.ytqu-stop[hidden] { display: none; }
